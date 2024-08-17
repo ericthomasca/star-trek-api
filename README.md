@@ -1,5 +1,7 @@
 # Star Trek Database
 
+[![Go Reference](https://pkg.go.dev/badge/github.com/ericthomasca/star-trek-api.svg)](https://pkg.go.dev/github.com/ericthomasca/star-trek-api)
+
 This project provides a database for Star Trek series and episodes. It includes functionality to seed the database with data from JSON files.
 
 ## Project Structure
