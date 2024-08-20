@@ -25,3 +25,4 @@
 !/.env.example
 
 !/data/series.json
+!/data/seasons/*/*
