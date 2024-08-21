@@ -14,103 +14,11 @@ func SeedDatabase(db *gorm.DB) {
 	// AutoMigrate will create the tables if they do not exist
 	db.AutoMigrate(&models.Series{}, &models.Season{}, &models.Episode{})
 
-	var seriesData = []models.Series{
-		{
-			Title: "Star Trek: Deep Space Nine",
-			Seasons: []models.Season{
-				{
-					SeasonNumber: 1,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 2,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 3,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 4,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 5,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 6,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 7,
-					Episodes:     []models.Episode{},
-				},
-			},
-		},
-		{
-			Title: "Star Trek: Voyager",
-			Seasons: []models.Season{
-				{
-					SeasonNumber: 1,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 2,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 3,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 4,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 5,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 6,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 7,
-					Episodes:     []models.Episode{},
-				},
-			},
-		},
-		{
-			Title: "Star Trek: Enterprise",
-			Seasons: []models.Season{
-				{
-					SeasonNumber: 1,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 2,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 3,
-					Episodes:     []models.Episode{},
-				},
-				{
-					SeasonNumber: 4,
-					Episodes:     []models.Episode{},
-				},
-			},
-		},
-	}
-
-	db.Create(&data.TOSData)
-	db.Create(&data.TASData)
-	db.Create(&data.TNGData)
-
-	// Seed series data
-	for _, s := range seriesData {
-		db.Create(&s)
-	}
+	// Seed the database with show data
+	db.Create(&data.TOSData) // Star Trek: The Original Series
+	db.Create(&data.TASData) // Star Trek: The Animated Series
+	db.Create(&data.TNGData) // Star Trek: The Next Generation
+	db.Create(&data.DS9Data) // Star Trek: Deep Space Nine
+	db.Create(&data.VOYData) // Star Trek: Voyager
+	db.Create(&data.ENTData) // Star Trek: Enterprise
 }
-
