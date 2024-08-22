@@ -7,19 +7,32 @@ This project provides a database for Star Trek series and episodes. It includes 
 ## Project Structure
 
 ```
-star-trek-database/
+star-trek-api/
+│
+├── config/
+│ └── config.go # Configuration settings
 │
 ├── data/
-│   ├── series.json
-│   └── episodes/
-│       ├── <series-name>-episodes.json
+│ ├── data.go # General data handling
+│ ├── ds9.go # Data for Deep Space Nine
+│ ├── ent.go # Data for Enterprise
+│ ├── tas.go # Data for The Animated Series
+│ ├── tng.go # Data for The Next Generation
+│ ├── tos.go # Data for The Original Series
+│ └── voy.go # Data for Voyager
 │
-├── main.go            # Main application entry point
-├── seed.go            # Database seeding logic
-├── .env               # Environment variables
-├── go.mod             # Go module file
-├── go.sum             # Go module checksum file
-└── README.md          # Project documentation
+├── models/
+│ └── models.go # Database models
+|
+├── seed/
+│ └── seed.go # Database seeding logic
+|
+├── go.mod # Go module file
+├── go.sum # Go module checksum file
+├── LICENSE # Project license
+├── main.go # Main application entry point
+├── README.md # Project documentation
+└── star-trek-api # Executable binary (if built)
 ```
 
 ## Setup
@@ -71,12 +84,17 @@ go run main.go
 This will:
 - Drop existing tables
 - Recreate tables
-- Seed the database with data from `data/series.json` and `data/episodes/`
+- Seed the database with data from `data/` files
 
 ## Data Files
 
-- **`data/series.json`**: Series information.
-- **`data/episodes/`**: Episode data files for each series.
+- **`data/data.go`**: General data handling functions.
+- **`data/ds9.go`**: Data for Deep Space Nine.
+- **`data/ent.go`**: Data for Enterprise.
+- **`data/tas.go`**: Data for The Animated Series.
+- **`data/tng.go`**: Data for The Next Generation.
+- **`data/tos.go`**: Data for The Original Series.
+- **`data/voy.go`**: Data for Voyager.
 
 ## License
 
