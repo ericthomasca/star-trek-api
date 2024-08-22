@@ -14,11 +14,7 @@ func SeedDatabase(db *gorm.DB) {
 	// AutoMigrate will create the tables if they do not exist
 	db.AutoMigrate(&models.Series{}, &models.Season{}, &models.Episode{})
 
-	// Seed the database with show data
-	db.Create(&data.TOSData) // Star Trek: The Original Series
-	db.Create(&data.TASData) // Star Trek: The Animated Series
-	db.Create(&data.TNGData) // Star Trek: The Next Generation
-	db.Create(&data.DS9Data) // Star Trek: Deep Space Nine
-	db.Create(&data.VOYData) // Star Trek: Voyager
-	db.Create(&data.ENTData) // Star Trek: Enterprise
+	for _, series := range data.SeriesData {
+		db.Create(&series)
+	}
 }

@@ -2,8 +2,8 @@ package models
 
 // Series represents a Star Trek series.
 type Series struct {
-	ID      uint     `gorm:"primaryKey"`      // The ID of the series
-	Title   string   `gorm:"unique;not null"` // The title of the series
+	ID      uint     `gorm:"primaryKey"` // The ID of the series
+	Title   string   `gorm:"not null"`   // The title of the series
 	Seasons []Season // The episodes of the series
 }
 

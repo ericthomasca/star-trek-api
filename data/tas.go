@@ -6,7 +6,6 @@ import (
 
 // Create the TASData variable with the provided data
 var TASData = models.Series{
-	ID:    1, // Assuming an ID for the series
 	Title: "Star Trek: The Animated Series",
 	Seasons: []models.Season{
 		{
