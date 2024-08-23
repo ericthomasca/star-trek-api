@@ -24,3 +24,10 @@ type Episode struct {
 	AirDate       *string  `gorm:"index"`    // The air date of the episode (nullable)
 	StarDate      *float64 `gorm:"index"`    // The Stardate of the episode (nullable)
 }
+
+// Movie represents a Star Trek movie.
+type Movie struct {
+	ID          uint    `gorm:"primaryKey"` // The ID of the movie
+	Title       string  `gorm:"not null"`   // The title of the movie
+	ReleaseDate *string `gorm:"index"`      // The release date of the movie (nullable)
+}

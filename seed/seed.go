@@ -9,14 +9,29 @@ import (
 // SeedDatabase seeds the database with sample data.
 func SeedDatabase(db *gorm.DB) {
 	// Drop all tables
-	db.Migrator().DropTable(&models.Series{}, &models.Season{}, &models.Episode{})
+	db.Migrator().DropTable(
+		&models.Series{},
+		&models.Season{},
+		&models.Episode{},
+		&models.Movie{},
+	)
 
 	// AutoMigrate will create the tables if they do not exist
-	db.AutoMigrate(&models.Series{}, &models.Season{}, &models.Episode{})
+	db.AutoMigrate(
+		&models.Series{},
+		&models.Season{},
+		&models.Episode{},
+		&models.Movie{},
+	)
 
-	// Create the database
+	// Create the database for series
 	for _, series := range data.SeriesData {
 		db.Create(&series)
+	}
+
+	// Create the database for movies
+	for _, movie := range data.MovieData {
+		db.Create(&movie)
 	}
 
 	// Create view for all episodes in order of series, season, episode
