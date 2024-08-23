@@ -3,27 +3,31 @@ package main
 import (
 	"log"
 
-	"github.com/ericthomasca/star-trek-api/config"
+	"github.com/gin-gonic/gin"
+
+	"github.com/ericthomasca/star-trek-api/controllers"
+	"github.com/ericthomasca/star-trek-api/db"
 	"github.com/ericthomasca/star-trek-api/seed"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
 )
 
 func main() {
-	// load config
-	cfg, err := config.LoadConfig()
+	// load db
+	dbConn, err := db.LoadDB()
 	if err != nil {
-		log.Fatalf("Error loading config: %v", err)
+		log.Fatalf("Error loading database: %v", err)
 	}
 
-	// create database connection string
-	dsn := cfg.GetDSN()
+	// seed db
+	seed.SeedDatabase(dbConn)
 
-	// connect to database
-	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		panic("failed to connect database")
-	}
+	// create router
+	router := gin.Default()
 
-	seed.SeedDatabase(db)
+	// add routes
+	router.GET("/episodes", controllers.GetEpisodes)
+	router.GET("/movies", controllers.GetMovies)
+
+	// Start server
+	router.Run(":61234") // listen and serve on 0.0.0.0:61234
+
 }

@@ -31,3 +31,13 @@ type Movie struct {
 	Title       string  `gorm:"not null"`   // The title of the movie
 	ReleaseDate *string `gorm:"index"`      // The release date of the movie (nullable)
 }
+
+// EpisodeView represents the structure of the data in the episodes_view.
+type EpisodeView struct {
+	SeriesTitle    string  `json:"series_title"`
+	SeasonNumber   int     `json:"season_number"`
+	EpisodeNumber  int     `json:"episode_number"`
+	EpisodeTitle   string  `json:"episode_title"`
+	AirDate        *string `json:"air_date"`
+	StarDate       *float64 `json:"star_date"`
+}
