@@ -26,3 +26,5 @@
 
 !/data/series.json
 !/data/seasons/*/*
+
+.vscode
