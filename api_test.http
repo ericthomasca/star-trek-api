@@ -1,0 +1,8 @@
+### Get All Episodes
+GET http://localhost:61234/episodes
+Accept: application/json
+
+### Get All Movies
+GET http://localhost:61234/movies
+Accept: application/json
+
